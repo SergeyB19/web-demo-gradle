@@ -15,13 +15,14 @@ import java.util.Collection;
 public class BooksController {
 
     private final BookService bookService;
+
     public BooksController(BookService bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping("{id}") // GET http://localhost:8080/books/23
-    public ResponseEntity<Book>  getBookInfo(@PathVariable long id) {
-        Book book =  bookService.findBook(id);
+    public ResponseEntity<Book> getBookInfo(@PathVariable long id) {
+        Book book = bookService.findBook(id);
         if (book == null) {
             return ResponseEntity.notFound().build();
         }
@@ -35,7 +36,7 @@ public class BooksController {
 
     @PostMapping // POST http://localhost:8080/books
     public Book createBook(@RequestBody Book book) {
-         bookService.createBook(book);
+        bookService.createBook(book);
         return book;
     }
 
@@ -50,8 +51,9 @@ public class BooksController {
 
 
     @DeleteMapping("{id}") // DELETE http://localhost:8080/books/23
-    public Book deleteBook(@PathVariable Long id) {
-        return bookService.deleteBook(id);
+    public ResponseEntity deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.ok().build();
     }
 
 }

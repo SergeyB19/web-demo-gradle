@@ -16,8 +16,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 //    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+    implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.7.3'
     //  testRuntimeOnly 'org.postgresql:postgresql'
 }
 
