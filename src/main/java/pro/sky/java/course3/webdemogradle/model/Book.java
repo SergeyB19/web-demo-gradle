@@ -1,8 +1,6 @@
 package pro.sky.java.course3.webdemogradle.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 @Entity
 public class Book {
@@ -12,6 +10,9 @@ public class Book {
     private String name;
     private String author;
 
+    @ManyToOne
+    @JoinColumn(name = "reader_id")
+    private Reader reader;
     @Override
     public String toString() {
         return "Book{" +
@@ -31,7 +32,7 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, author);
+        return Objects.hash(id, name, author,reader);
     }
 
     public long getId() {

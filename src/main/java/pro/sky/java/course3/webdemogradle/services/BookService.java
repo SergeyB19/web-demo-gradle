@@ -1,13 +1,10 @@
 package pro.sky.java.course3.webdemogradle.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course3.webdemogradle.model.Book;
 import pro.sky.java.course3.webdemogradle.repositories.BookRepository;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 @Service
 public class BookService {
@@ -38,5 +35,17 @@ public class BookService {
 
     public Collection<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+
+    public Book findByName(String name) {
+        return bookRepository.findByName(name);
+    }
+
+    public Collection<Book> findByAuthor(String author) {
+        return bookRepository.findBookByAuthorContainsIgnoreCase(author);
+    }
+
+    public Collection<Book> findByNamePart(String part) {
+        return bookRepository.findAllByNameContainsIgnoreCase(part);
     }
 }
