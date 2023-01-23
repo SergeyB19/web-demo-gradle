@@ -2,6 +2,7 @@ package pro.sky.java.course3.webdemogradle.services;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.web.multipart.MultipartFile;
 import pro.sky.java.course3.webdemogradle.model.Book;
 import pro.sky.java.course3.webdemogradle.model.BookCover;
@@ -18,7 +19,7 @@ import java.nio.file.Path;
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
 @Service
-@Transactional
+@Transactional(isolation = Isolation.DEFAULT)
 public class BookCoverService {
 
 
